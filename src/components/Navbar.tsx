@@ -1,5 +1,5 @@
 import { useUser } from '@clerk/nextjs'
-import { SignOutButton } from '@clerk/nextjs'
+import { UserButton } from '@clerk/nextjs'
 import React, { useState } from 'react'
 
 function Navbar() {
@@ -19,10 +19,7 @@ function Navbar() {
                     <a className=' text-slate-200 p-2 border-b hover:border-slate-200 border-slate-900/75 transition-all  ' onClick={() => setMobileMenu(!mobileMenu)}>Menu</a>
                 </div>
 
-                <img src={profileImage} className='w-12 h-12 rounded-full' onClick={() => { setUserMenu(!userMenu) }} />
-            </div>
-            <div className={userMenu ? "fixed right-1 top-16 btn-group btn-group-vertical" : "hidden"}>
-                <SignOutButton className="bg-slate-700 border-none p-2 rounded-md hover:bg-slate-900 transition-all" />
+                <UserButton />
             </div>
             <div className={mobileMenu ? "fixed z-20 left-0 right-0  top-16 btn-group-vertical btn-group" : "hidden"}>
                 <button className='btn w-full bg-slate-700 border-none' onClick={() => { setMobileMenu(false) }}>Sobre Nosotros</button>
