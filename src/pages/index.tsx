@@ -29,7 +29,7 @@ const Home: NextPage = () => {
             <meta name="description" content="lo que te falta para volverte inolvidable" />
             <link rel="icon" href="/logoJao.png" />
         </Head>
-        <main className="min-h-screen flex flex-col bg-slate-800 h-[200vh]">
+        <main className="min-h-screen flex flex-col bg-slate-800 min-h-screen h-[200vh]">
             <Navbar />
             <div className="navbar mb-3"></div>
             <h1 className="text-slate-300 text-5xl font-thin text-center mb-5">JAO Accesorios</h1>
