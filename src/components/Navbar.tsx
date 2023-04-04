@@ -4,8 +4,6 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 
 function Navbar() {
-    const profileImage = useUser().user?.profileImageUrl
-    const [userMenu, setUserMenu] = useState<boolean>(false)
     const [mobileMenu, setMobileMenu] = useState<boolean>(false)
     return (
         <div className=''>
