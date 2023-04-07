@@ -6,7 +6,7 @@ import Navbar from "~/components/Navbar"
 
 export default function Product() {
     const router = useRouter()
-    let { id } = router.query
+    const { id } = router.query
     let product
     if (typeof id === "string") product = api.product.getOne.useQuery({ id: id })
     let data;
