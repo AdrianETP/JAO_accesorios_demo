@@ -1,10 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { SignIn, SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
-import Navbar from "~/components/Navbar";
-import Product from "~/components/product";
-import Products from "./Products";
-import { useEffect } from "react";
+import { SignIn, useUser } from "@clerk/nextjs";
 
 
 const Home: NextPage = () => {
