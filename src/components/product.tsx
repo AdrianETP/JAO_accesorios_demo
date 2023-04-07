@@ -6,6 +6,7 @@ interface Props {
     description: string,
     price: number,
     name: string,
+    id:string,
 }
 function Product(props: Props) {
     return (
@@ -13,10 +14,10 @@ function Product(props: Props) {
             <figure className='w-full h-3/4 overflow-y-hidden'><Image src={props.image} alt={props.name} width={600} height={50} /></figure>
             <div className="card-body">
                 <h2 className="card-title">{props.name}</h2>
-                <p>{props.description}</p>
-                <p>${props.price}MXN</p>
+                <p className='text-slate-400 text-md'>{props.description}</p>
+                <p className='text-slate-400'>${props.price}MXN</p>
                 <div className="card-actions justify-end">
-                    <button className="btn bg-sky-700 text-sky-100 border-sky-800">Comprar</button>
+                    <button className="btn bg-sky-700 text-sky-100 border-sky-800" onClick={() => { location.href = "/Products/" + props.id }}>Comprar</button>
                 </div>
             </div>
         </div>
