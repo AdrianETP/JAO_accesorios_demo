@@ -3,7 +3,6 @@ import { api } from "~/utils/api"
 import Image from 'next/image'
 import Head from "next/head"
 import Navbar from "~/components/Navbar"
-import { useState } from "react"
 import { loadStripe } from "@stripe/stripe-js"
 import { Elements, useStripe } from "@stripe/react-stripe-js"
 
@@ -26,12 +25,10 @@ function BuyButton(props: BuyProps) {
 export default function Product() {
     const router = useRouter()
     const id = router.query.id?.toString()
-    const [lugar, setLugar] = useState("");
-    const [otroLugar, setOtroLugar] = useState("");
+    const stripeKeys = api.stripe.getKeys.useQuery();
     if (!id) return (<h1>error: no id </h1>)
     const product = api.stripe.getProduct.useQuery({ id: id.toString() });
     const price = product?.data?.default_price
-    const stripeKeys = api.stripe.getKeys.useQuery();
     if (!stripeKeys.data) return (<h1 className="bg-slate-800 text-slate-200">error: no stripe keys</h1>)
     const stripePromise = loadStripe(stripeKeys.data?.publicKey)
     if (product.isLoading || stripeKeys.isLoading) return (<div><h1>Loading...</h1></div>)
@@ -60,13 +57,6 @@ export default function Product() {
                             <p className="text-2xl font-thin text-slate-400 text-center px-4">{product.data.description}</p>
                             <div className="text-2xl font-thin text-slate-400 px-4 flex justify-evenly w-4/5"><p className="text-slate-400">precio: ${price.unit_amount / 100}MXN</p></div>
                             <h3 className="text-xl font-bold text-center">donde te gustaria recoger el producto?</h3>
-
-                            <select className="select select-bordered w-full max-w-xs" onChange={e => { setLugar(e.target.value) }} value={lugar}>
-                                <option>Lugar 1</option>
-                                <option>Lugar 2</option>
-                                <option>Otro</option>
-                            </select>
-                            <input className={lugar == "Otro" ? "input w-80 input-bordered" : "hidden"} placeholder="Que otro lugar te conviene?" onChange={(e) => setOtroLugar(e.target.value)} value={otroLugar} />
                             <Elements stripe={stripePromise}>
                                 <BuyButton priceId={price.id} />
                             </Elements>
