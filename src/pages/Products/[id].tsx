@@ -14,25 +14,21 @@ function BuyButton(props: BuyProps) {
     const createCheckoutSession = api.stripe.getSession.useMutation()
     const stripe = useStripe()
     const handleSubmit = async () => {
-
         const session = await createCheckoutSession.mutateAsync({ priceId: props.priceId })
-        console.log(session)
-        await stripe?.redirectToCheckout({
-            sessionId: session.id
-        })
+        await stripe?.redirectToCheckout({ sessionId: session.id })
     }
-    return (
 
-        <button onClick={() => handleSubmit()} className="btn btn-success">buy</button>
+    return (
+        <button onClick={handleSubmit} className="btn btn-success">buy</button>
     )
 }
 
 export default function Product() {
     const router = useRouter()
     const id = router.query.id?.toString()
-    if (!id) return (<h1>error: no id </h1>)
     const [lugar, setLugar] = useState("");
     const [otroLugar, setOtroLugar] = useState("");
+    if (!id) return (<h1>error: no id </h1>)
     const product = api.stripe.getProduct.useQuery({ id: id.toString() });
     const price = product?.data?.default_price
     const stripeKeys = api.stripe.getKeys.useQuery();
