@@ -5,6 +5,7 @@ import Head from "next/head"
 import Navbar from "~/components/Navbar"
 import { loadStripe } from "@stripe/stripe-js"
 import { Elements, useStripe } from "@stripe/react-stripe-js"
+import { useState } from "react"
 
 type BuyProps = {
     priceId: string
@@ -12,14 +13,18 @@ type BuyProps = {
 function BuyButton(props: BuyProps) {
     const createCheckoutSession = api.stripe.getSession.useMutation()
     const stripe = useStripe()
+    const [hello, setHello] = useState<string>(" hello world")
     const handleSubmit = async () => {
         const session = await createCheckoutSession.mutateAsync({ priceId: props.priceId })
         await stripe?.redirectToCheckout({ sessionId: session.id })
     }
 
     return (
-        <button onClick={handleSubmit} className="btn btn-success">buy</button>
-    )
+        <div>
+            <button onClick={() => { handleSubmit; setHello('hola') }} className="btn btn-success">buy</button>
+            {hello}
+        </div>
+    );
 }
 
 export default function Product() {
