@@ -6,6 +6,7 @@ export const productRouter = createTRPCRouter({
         return ctx.prisma.product.findMany();
     }),
     getOne: publicProcedure.input(z.object({ id: z.string() }).required()).query(({ ctx, input }) => {
-        return ctx.prisma.product.findUnique({ where: { id: input.id } })
+        const result = ctx.prisma.product.findUnique({ where: { id: input.id } })
+        return result
     }),
 });

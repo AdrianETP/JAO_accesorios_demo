@@ -1,0 +1,38 @@
+import { z } from "zod";
+import { createTRPCRouter, publicProcedure } from "~/server/api/trpc";
+import Stripe from "stripe";
+import { env } from '../../../env.mjs'
+
+export const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
+    apiVersion: "2022-11-15"
+})
+export const stripeRouter = createTRPCRouter({
+    getProducts: publicProcedure.query(async ({ ctx }) => {
+        const products = await stripe.products.list({ expand: ['data.default_price'] })
+        return products
+    }),
+    getProduct: publicProcedure.input(z.object({ id: z.string() }).required()).query(async ({ ctx, input }) => {
+        const product: Stripe.Product = await stripe.products.retrieve(input.id, { expand: ["default_price"] })
+        return product
+
+    }),
+    getKeys: publicProcedure.query(({ ctx }) => {
+        return {
+            publicKey: env.STRIPE_PUBLISHABLE_KEY,
+            secretKey: env.STRIPE_SECRET_KEY,
+        }
+    }),
+    getSession: publicProcedure.input(z.object({ priceId: z.string() })).mutation(({ ctx, input }) => {
+        return stripe.checkout.sessions.create({
+            mode: "payment",
+            payment_method_types: ["card"],
+            line_items: [{
+                price: input.priceId,
+                quantity:1
+            }],
+            success_url: "http://localhost:3000/Products",
+        })
+    })
+
+
+})

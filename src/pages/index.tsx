@@ -6,7 +6,6 @@ import { SignIn, useUser } from "@clerk/nextjs";
 const Home: NextPage = () => {
     const user = useUser()
     console.log(user.isSignedIn ? user.user : "")
-
     if (!user.isSignedIn) return (
         <>
             <Head>
