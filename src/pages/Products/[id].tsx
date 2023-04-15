@@ -21,7 +21,7 @@ function BuyButton(props: BuyProps) {
 
     return (
         <div>
-            <button onClick={() => { handleSubmit; setHello('hola') }} className="btn btn-success">buy</button>
+            <button onClick={async () => { await handleSubmit(); setHello('hola') }} className="btn btn-success">buy</button>
             {hello}
         </div>
     );
