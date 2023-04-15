@@ -17,7 +17,7 @@ function BuyButton(props: BuyProps) {
 
         const session = await createCheckoutSession.mutateAsync({ priceId: props.priceId })
         console.log(session)
-        stripe?.redirectToCheckout({
+        await stripe?.redirectToCheckout({
             sessionId: session.id
         })
     }
