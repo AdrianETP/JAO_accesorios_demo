@@ -3,9 +3,9 @@ import { api } from "~/utils/api"
 import Image from 'next/image'
 import Head from "next/head"
 import Navbar from "~/components/Navbar"
-import { ReactFragment, useState } from "react"
+import { useState } from "react"
 import { loadStripe } from "@stripe/stripe-js"
-import { Elements, PaymentElement, useStripe } from "@stripe/react-stripe-js"
+import { Elements, useStripe } from "@stripe/react-stripe-js"
 
 type BuyProps = {
     priceId: string
@@ -13,9 +13,8 @@ type BuyProps = {
 function BuyButton(props: BuyProps) {
     const createCheckoutSession = api.stripe.getSession.useMutation()
     const stripe = useStripe()
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async () => {
 
-        e.preventDefault()
         const session = await createCheckoutSession.mutateAsync({ priceId: props.priceId })
         console.log(session)
         stripe?.redirectToCheckout({
@@ -24,7 +23,7 @@ function BuyButton(props: BuyProps) {
     }
     return (
 
-        <button onClick={(e) => handleSubmit(e)} className="btn btn-success">buy</button>
+        <button onClick={() => handleSubmit()} className="btn btn-success">buy</button>
     )
 }
 
