@@ -28,11 +28,9 @@ function BuyButton(props: BuyProps) {
 }
 
 export default function Product() {
-    const router = useRouter()
-    const id = router.query.id?.toString()
+    const { query } = useRouter()
     const stripeKeys = api.stripe.getKeys.useQuery();
-    if (!id) return (<h1>error: no id </h1>)
-    const product = api.stripe.getProduct.useQuery({ id: id.toString() });
+    const product = api.stripe.getProduct.useQuery({ id: query.id as string });
     const price = product?.data?.default_price
     if (!stripeKeys.data) return (<h1 className="bg-slate-800 text-slate-200">error: no stripe keys</h1>)
     const stripePromise = loadStripe(stripeKeys.data?.publicKey)
