@@ -7,7 +7,7 @@ export const stripe = new Stripe(env.STRIPE_SECRET_KEY, {
     apiVersion: "2022-11-15"
 })
 export const stripeRouter = createTRPCRouter({
-    getProducts: publicProcedure.query(async ({ ctx }) => {
+    getProducts: publicProcedure.query(async () => {
         const products = await stripe.products.list({ expand: ['data.default_price'] })
         return products
     }),
@@ -16,7 +16,7 @@ export const stripeRouter = createTRPCRouter({
         return product
 
     }),
-    getKeys: publicProcedure.query(({ ctx }) => {
+    getKeys: publicProcedure.query(() => {
         return {
             publicKey: env.STRIPE_PUBLISHABLE_KEY,
             secretKey: env.STRIPE_SECRET_KEY,
@@ -28,7 +28,7 @@ export const stripeRouter = createTRPCRouter({
             payment_method_types: ["card"],
             line_items: [{
                 price: input.priceId,
-                quantity:1
+                quantity: 1
             }],
             success_url: "http://localhost:3000/Products",
         })
