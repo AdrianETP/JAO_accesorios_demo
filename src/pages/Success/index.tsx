@@ -15,7 +15,7 @@ interface PaymentResultType {
     Calle: string;
     Colonia: string;
     NumeroCasa: number;
-    Telefono: number;
+    Telefono: string;
     NombreCliente: string;
     NombreProducto: string;
     PrecioProducto: number;
@@ -66,11 +66,12 @@ const SuccessPage = () => {
                 Calle: envioRef.current.Calle,
                 Colonia: envioRef.current.Colonia,
                 NumeroCasa: +envioRef.current.NumeroCasa,
-                Telefono: +envioRef.current.Telefono,
+                Telefono: envioRef.current.Telefono,
                 NombreCliente: envioRef.current.Nombre,
                 NombreProducto: productNameRef.current,
                 PrecioProducto: +productPriceRef.current,
             };
+            console.log(PaymentResult);
             createEnvio.mutate(PaymentResult);
         }
     }, []);

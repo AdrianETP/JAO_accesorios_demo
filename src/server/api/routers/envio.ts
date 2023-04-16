@@ -7,7 +7,7 @@ export const envioRouter = createTRPCRouter({
         Calle: z.string(),
         Colonia: z.string(),
         NumeroCasa: z.number(),
-        Telefono: z.number(),
+        Telefono: z.string(),
         NombreCliente: z.string(),
         NombreProducto: z.string(),
         PrecioProducto: z.number(),

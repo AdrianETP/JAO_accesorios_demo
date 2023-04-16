@@ -26,7 +26,7 @@ model Envio {
     Calle          String
     Colonia        String
     NumeroCasa     Int
-    Telefono       Int
+    Telefono       String
     NombreCliente  String
     NombreProducto String
     PrecioProducto Int
