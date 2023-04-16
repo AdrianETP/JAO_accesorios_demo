@@ -32,7 +32,7 @@ function BuyForm(props: BuyFormProps) {
             const { error } = await stripe.confirmPayment({
                 elements,
                 confirmParams: { // Make sure to change this to your payment completion page 
-                    return_url: `http://localhost:3000/Success?envio=${JSON.stringify(envio)}&productName=${props.productName}&productPrice=${props.productPrice}`,
+                    return_url: `https://jao-accesorios-demo.vercel.app/Success?envio=${JSON.stringify(envio)}&productName=${props.productName}&productPrice=${props.productPrice}`,
                 },
             });
             if (!error) {
