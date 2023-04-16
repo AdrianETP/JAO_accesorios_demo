@@ -1,5 +1,7 @@
 import { useEffect, useRef } from "react";
 import { api } from "~/utils/api"
+import Head from "next/head";
+import Navbar from "~/components/Navbar";
 
 interface Envio {
     CodigoPostal: string;
@@ -27,6 +29,10 @@ const SuccessPage = () => {
     const envioRef = useRef<Envio>();
     const productNameRef = useRef<string>();
     const productPriceRef = useRef<string>();
+    const VolverInicio = () => {
+        sessionStorage.clear();
+        location.href = "/";
+    }
 
     if (typeof window !== "undefined") {
         const params = new URLSearchParams(window.location.search);
@@ -71,12 +77,36 @@ const SuccessPage = () => {
                 NombreProducto: productNameRef.current,
                 PrecioProducto: +productPriceRef.current,
             };
-            console.log(PaymentResult);
-            createEnvio.mutate(PaymentResult);
+            const storagePayment = sessionStorage.getItem("payment");
+            if (storagePayment != JSON.stringify(PaymentResult)) {
+                createEnvio.mutate(PaymentResult)
+                sessionStorage.setItem("payment", JSON.stringify(PaymentResult));
+            }
         }
     }, []);
 
-    return <div>Success</div>;
+    return (
+        <div>
+            <Head>
+                <title>JAO accesorios</title>
+                <meta name="description" content="lo que te falta para volverte inolvidable" />
+                <link rel="icon" href="/logoJao.png" />
+            </Head>
+            <Navbar />
+            <main className="min-h-screen h-fit  flex flex-col  justify-center bg-slate-800 items-center max-w-screen min-w-screen  ">
+                <div className="navbar mb-5"></div>
+                <div className="flex lg:space-x-5  flex-col items-center space-y-5 w-screen">
+                    <h1 className="text-6xl font-bold text-white">
+                        Gracias por su compra
+                    </h1>
+                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => VolverInicio()}>
+                        Volver al inicio
+                    </button>
+                </div >
+            </main >
+        </div >
+
+    );
 };
 
 export default function Success() {
