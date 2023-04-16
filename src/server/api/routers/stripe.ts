@@ -11,15 +11,20 @@ export const stripeRouter = createTRPCRouter({
         const products = await stripe.products.list({ expand: ['data.default_price'] })
         return products
     }),
-    getProduct: publicProcedure.input(z.object({ id: z.string() }).required()).query(async ({  input }) => {
+    getProduct: publicProcedure.input(z.object({ id: z.string() }).required()).query(async ({ input }) => {
         const product: Stripe.Product = await stripe.products.retrieve(input.id, { expand: ["default_price"] })
         return product
 
     }),
-    getKeys: publicProcedure.query(() => {
+    getKeys: publicProcedure.input(z.object({ amount: z.number() }).required()).query(async ({ input }) => {
+        const paymentIntent = await stripe.paymentIntents.create({
+            amount: input.amount,
+            currency: "mxn",
+            payment_method_types: ["card"],
+        })
         return {
             publicKey: env.STRIPE_PUBLISHABLE_KEY,
-            secretKey: env.STRIPE_SECRET_KEY,
+            secretKey: paymentIntent.client_secret,
         }
     }),
     getSession: publicProcedure.input(z.object({ priceId: z.string() })).mutation(({ input }) => {

@@ -2,25 +2,13 @@ import Product from '~/components/product'
 import Head from 'next/head'
 import Navbar from '~/components/Navbar'
 import { api } from '~/utils/api';
+import Loading from '~/components/Loading';
 
 function Products() {
     const productQuery = api.stripe.getProducts.useQuery()
     const products = productQuery.data?.data
     if (productQuery.isLoading) return (
-        <div>
-            <Head>
-                <title>JAO accesorios</title>
-                <meta name="description" content="lo que te falta para volverte inolvidable" />
-                <link rel="icon" href="/logoJao.png" />
-            </Head>
-            <Navbar />
-            <main className="min-h-screen h-fit flex flex-col bg-slate-800 items-center max-w-screen min-w-full w-fit">
-                <div className="navbar mb-5"></div>
-                <div className='flex justify-center items-center'>
-                    <h1 className='text-5xl font-thin'>Loading...</h1>
-                </div>
-            </main>
-        </div>
+        <Loading />
     )
     if (!products) return (<h1>Product Error</h1>)
 
