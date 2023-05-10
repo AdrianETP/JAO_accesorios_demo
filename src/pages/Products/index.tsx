@@ -7,6 +7,9 @@ import Loading from '~/components/Loading';
 function Products() {
     const productQuery = api.stripe.getProducts.useQuery()
     const products = productQuery.data?.data
+    if (typeof window != "undefined" && window.sessionStorage.getItem("payment")) {
+        window.sessionStorage.removeItem("payment")
+    }
     if (productQuery.isLoading) return (
         <Loading />
     )

@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { api } from "~/utils/api"
 import Head from "next/head";
 import Navbar from "~/components/Navbar";
+import { useUser } from "@clerk/nextjs";
 
 interface Envio {
     CodigoPostal: string;
@@ -60,31 +61,46 @@ const SuccessPage = () => {
             productPriceRef.current = productPriceParams;
         }
     }
+    const userHook = useUser();
+    let email: string | undefined = undefined;
+    if (userHook.isSignedIn) {
+        email = userHook.user.emailAddresses.toString()
+        console.log(email)
+    }
 
-    useEffect(() => {
-        if (
-            envioRef.current &&
-            productNameRef.current &&
-            productPriceRef.current
-        ) {
-            const PaymentResult: PaymentResultType = {
-                CodigoPostal: +envioRef.current.CodigoPostal,
-                Calle: envioRef.current.Calle,
-                Colonia: envioRef.current.Colonia,
-                NumeroCasa: +envioRef.current.NumeroCasa,
-                Telefono: envioRef.current.Telefono,
-                NombreCliente: envioRef.current.Nombre,
-                NombreProducto: productNameRef.current,
-                PrecioProducto: +productPriceRef.current,
-            };
-            const storagePayment = sessionStorage.getItem("payment");
-            if (storagePayment != JSON.stringify(PaymentResult)) {
-                createEnvio.mutate(PaymentResult)
-                sessionStorage.setItem("payment", JSON.stringify(PaymentResult));
-            }
+    if (
+        envioRef.current &&
+        productNameRef.current &&
+        productPriceRef.current
+    ) {
+        interface PaymentResult {
+            CodigoPostal: number;
+            Calle: string;
+            Colonia: string;
+            NumeroCasa: number;
+            Telefono: string;
+            NombreCliente: string;
+            NombreProducto: string;
+            PrecioProducto: number;
+            Email: string;
         }
-    }, []);
-
+        const PaymentResult: PaymentResult = {
+            CodigoPostal: +envioRef.current.CodigoPostal,
+            Calle: envioRef.current.Calle,
+            Colonia: envioRef.current.Colonia,
+            NumeroCasa: +envioRef.current.NumeroCasa,
+            Telefono: envioRef.current.Telefono,
+            NombreCliente: envioRef.current.Nombre,
+            NombreProducto: productNameRef.current,
+            PrecioProducto: +productPriceRef.current,
+            Email: email ? email : "",
+        };
+        const storagePayment = sessionStorage.getItem("payment");
+        if (storagePayment != JSON.stringify(PaymentResult)) {
+            createEnvio.mutate(PaymentResult)
+            sessionStorage.setItem("payment", JSON.stringify(PaymentResult));
+        }
+    }
     return (
         <div>
             <Head>

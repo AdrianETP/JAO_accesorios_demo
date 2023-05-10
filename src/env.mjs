@@ -9,6 +9,8 @@ const server = z.object({
     NODE_ENV: z.enum(["development", "test", "production"]),
     STRIPE_SECRET_KEY: z.string(),
     STRIPE_PUBLISHABLE_KEY: z.string(),
+    SMTP_USERNAME: z.string(),
+    SMTP_PASSWORD: z.string(),
 });
 
 /**
@@ -29,7 +31,10 @@ const processEnv = {
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
-    STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY
+    STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
+    SMTP_USERNAME: process.env.SMTP_USERNAME,
+    SMTP_PASSWORD: process.env.SMTP_PASSWORD,
+
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 

@@ -15,7 +15,6 @@ interface BuyFormProps {
 function BuyForm(props: BuyFormProps) {
     const stripe = useStripe()
     const elements = useElements()
-    const [message, setMessage] = useState("")
     const [envio, setEnvio] = useState({
         CodigoPostal: "",
         Calle: "",
@@ -42,7 +41,6 @@ function BuyForm(props: BuyFormProps) {
 
             } else {
                 console.log(error)
-                setMessage(error.message || "Something went wrong")
             }
         }
 
