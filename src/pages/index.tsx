@@ -12,8 +12,8 @@ const Home: NextPage = () => {
                 <meta name="description" content="lo que te falta para volverte inolvidable" />
                 <link rel="icon" href="/logoJao.png" />
             </Head>
-            <main className="h-screen w-screen bg-slate-800 flex justify-center items-center flex-col">
-                <h1 className="text-slate-300 text-5xl font-thin text-center mb-5"> JAO Accesorios</h1>
+            <main className="h-screen w-screen bg-slate-800  flex justify-center items-center flex-col">
+                <h1 className="text-5xl font-thin text-center mb-5  "> JAO Accesorios</h1>
                 <SignIn />
             </main>
         </>
@@ -27,3 +27,7 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+
+
+
