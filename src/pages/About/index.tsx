@@ -1,6 +1,6 @@
 export default function About() {
     return (
-        <div>Hola mi nombre es Adrian</div>
+        <div>Hola mi nombre es Santiago</div>
     )
 
 }
