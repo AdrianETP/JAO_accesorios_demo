@@ -1,4 +1,4 @@
-export default function About() {
+export default function Blog() {
     return (
         <>
         <div className="bg-red-300 w-1/2 text-black p-2 rounded-md "></div>
