@@ -1,13 +1,13 @@
-export default function About() {
-    return (
-        <>
-        <div className="bg-red-300 w-1/2 text-black p-2 rounded-md "></div>
-        <button className="btn btn-info">Info</button>
-        <button className="btn btn-success">Success</button>
-        <button className="btn btn-warning">Warning</button>
-        <button className="btn btn-error">Error</button>
-        </>
-        
-    )
+import Image from "next/image";
+import group_pic from "public/logoJAO.png";
 
+export default function About() {
+    
+    return (
+        <div>
+        <h1 className="text-center font-thin text-3xl">Quienes somos</h1>
+        <Image src = {group_pic} alt = "" width={300} className="mx-auto" />
+        <p className="font-thin" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates, ad? Repudiandae aut quasi, vero, laboriosam iure voluptas tempore dolores dolore tempora distinctio deserunt nemo, nobis ipsam vitae perspiciatis cupiditate. Dolores?</p>
+        </div>
+    )
 }
