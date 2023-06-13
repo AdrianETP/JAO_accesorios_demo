@@ -22,12 +22,30 @@ export default function About() {
                         officia deserunt mollit anim id est laborum e
                     </p>
                 </section>
-                <section className="text-center  flex flex-col items-center w-full space-y-10" >
+                <section className="text-center  flex flex-col items-center justify-center w-screen space-y-10" >
                     <h1 className="text-white text-6xl ">Propositos</h1>
-                    <div className="flex w-2/3 h-screen">
+                    <div className="w-full h-full flex  justify-center space-x-10 flex-wrap py-10">
+                        <div className="relative w-96 h-96">
+                            <h2 className="text-xl bg-black w-full h-full absolute rounded-md hover:opacity-0 transition-all flex justify-center items-center ease-in">hello world</h2>
+                            <p className="  bg-slate-600 w-full h-full text-md absolute rounded-md hover:opacity-100 opacity-0 transition-all flex justify-center items-center p-5  ease-out duration-1000 ">lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco
+                                laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui
+                                officia deserunt mollit anim id est laborum e
+                            </p>
+                        </div>
                         <div className="relative w-96 h-96">
                             <h2 className="text-xl bg-black w-full h-full absolute rounded-md hover:opacity-0 transition-all flex justify-center items-center">hello world</h2>
-                            <p className="  bg-black w-full h-full text-md absolute rounded-md hover:opacity-100 opacity-0 transition-all flex justify-center items-center p-5">lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor
+                            <p className="  bg-slate-600 w-full h-full text-md absolute rounded-md hover:opacity-100 opacity-0 transition-all flex justify-center items-center p-5 duration-1000 ">lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor
+                                incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco
+                                laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit
+                                esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui
+                                officia deserunt mollit anim id est laborum e
+                            </p>
+                        </div>
+                        <div className="relative w-96 h-96">
+                            <h2 className="text-xl bg-black w-full h-full absolute rounded-md hover:opacity-0 transition-all flex justify-center items-center">hello world</h2>
+                            <p className="  bg-slate-600 w-full h-full text-md absolute rounded-md hover:opacity-100 opacity-0 transition-all flex justify-center items-center p-5 duration-1000  ">lorem ipsum dolor sit amet consectetur adipisicing elit sed do eiusmod tempor
                                 incididunt ut labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco
                                 laboris nisi ut aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit
                                 esse cillum dolore eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui
@@ -35,6 +53,9 @@ export default function About() {
                             </p>
                         </div>
                     </div>
+
+
+
 
                 </section>
             </main>
