@@ -16,7 +16,7 @@ function Products() {
             </Head>
             <main className="h-screen w-screen bg-slate-800  flex justify-center items-center flex-col">
                 <h1 className="text-5xl font-thin text-center mb-5  "> JAO Accesorios</h1>
-                <SignIn />
+                <SignIn afterSignInUrl={'/Products'} />
             </main>
         </>
     );
