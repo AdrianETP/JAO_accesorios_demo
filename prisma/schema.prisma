@@ -31,3 +31,12 @@ model Envio {
     NombreProducto String
     PrecioProducto Int
 }
+
+model Blog {
+    id          String @id @default(cuid())
+    Title       String
+    Image       String
+    Description String
+    MdContent   String
+    HtmlContent String
+}

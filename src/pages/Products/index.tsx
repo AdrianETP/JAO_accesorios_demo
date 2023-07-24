@@ -14,7 +14,7 @@ function Products() {
                 <meta name="description" content="lo que te falta para volverte inolvidable" />
                 <link rel="icon" href="/logoJao.png" />
             </Head>
-            <main className="h-screen w-screen bg-slate-800  flex justify-center items-center flex-col">
+            <main className="h-screen w-screen bg-primary  flex justify-center items-center flex-col">
                 <h1 className="text-5xl font-thin text-center mb-5  "> JAO Accesorios</h1>
                 <SignIn afterSignInUrl={'/Products'} />
             </main>
@@ -39,10 +39,10 @@ function Products() {
                     <link rel="icon" href="/logoJao.png" />
                 </Head>
                 <Navbar />
-                <main className="min-h-screen h-fit flex flex-col bg-slate-800 items-center max-w-screen min-w-full w-fit">
+                <main className="min-h-screen h-fit flex flex-col bg-primary items-center max-w-screen min-w-full w-fit">
                     <div className="navbar mb-5"></div>
                     <div>
-                        <h1 className="text-slate-300 text-5xl  text-center"> Nuestros Productos</h1>
+                        <h1 className=" text-textColor text-5xl  text-center"> Nuestros Productos</h1>
                         <div className='sm:w-4/5 min-w-full min-h-screen h-fit flex flex-col sm:flex-row justify-center items-center sm:items-start sm:flex-wrap   '>
                             {products.map(product => {
                                 const price = product.default_price

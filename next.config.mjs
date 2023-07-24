@@ -19,6 +19,7 @@ const config = {
         defaultLocale: "en",
     },
     images: {
+        domains: ["images.unsplash.com"],
         remotePatterns: [
             {
                 protocol: 'https',
