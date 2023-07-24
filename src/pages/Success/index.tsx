@@ -109,13 +109,13 @@ const SuccessPage = () => {
                 <link rel="icon" href="/logoJao.png" />
             </Head>
             <Navbar />
-            <main className="min-h-screen h-fit  flex flex-col  justify-center bg-slate-800 items-center max-w-screen min-w-screen  ">
+            <main className="min-h-screen h-fit  flex flex-col  justify-center bg-primary items-center max-w-screen min-w-screen  ">
                 <div className="navbar mb-5"></div>
                 <div className="flex lg:space-x-5  flex-col items-center space-y-5 w-screen">
-                    <h1 className="text-6xl font-bold text-white">
+                    <h1 className="text-6xl font-bold text-textColor">
                         Gracias por su compra
                     </h1>
-                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded" onClick={() => VolverInicio()}>
+                    <button className="bg-secondary  text-textColor font-bold py-2 px-4 rounded hover:bg-secondarydes" onClick={() => VolverInicio()}>
                         Volver al inicio
                     </button>
                 </div >
