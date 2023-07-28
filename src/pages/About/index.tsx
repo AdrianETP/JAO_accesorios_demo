@@ -14,6 +14,11 @@ export default function About() {
             pregunta: "¿Cuál es la política de devoluciones y cambios?",
             respuesta: "Los artículos tienen una garantía de 15 días, si por cualquier razón el articulo llegará a estar defectuoso, nosotros mismos veríamos con buenos ojos ya sea devolver el dinero invertido en este o cambiarlo por otro del catálogo."
         },
+        {
+            id: 3,
+            pregunta: "¿Cuánto tardan los envíos en llegar?",
+            respuesta: "Los envíos en el área metropolitana llegan de 24-72 horas hábiles."
+        }
 
 
     ]
@@ -46,7 +51,7 @@ export default function About() {
             <Navbar />
             <main className="min-h-screen h-fit flex flex-col bg-primary items-center max-w-screen min-w-full w-fit  overflow-x-hidden">
                 <section className="text-center  flex  items-center w-full min-h-[80vh] h-4/6 pt-20 space-y-10 justify-evenly flex-wrap md:flex-row flex-col  " >
-                    <Image src="/logoJao.png" width={300} height={300} alt="Logo" className="rounded-md w-86  shadow-xl"></Image>
+                    <Image src="/JAO.jpeg" width={300} height={300} alt="Logo" className="rounded-md w-86  shadow-xl"></Image>
                     <div className="md:w-1/3 w-full text-center flex flex-col items-center space-y-5 ">
                         <h1 className="text-textColor md:text-6xl text-7xl">Quienes somos?</h1>
                         <p className="w-full text-textColor text-lg">Las apariencias importan, mentira si no lo crees. El cómo vistes importa para la escuela, el trabajo, negocios, relaciones personales, para toda tu vida. Con Jao Accesorios vestirás mejor para toda ocasión, no te sentirás mal vestido, subirá tu autoestima al tener buen porte. ¿Estás listo para tomar acción y que te tomen en serio en tu vida? Viste mejor con nosotros y se te facilitarán las cosas                        </p>

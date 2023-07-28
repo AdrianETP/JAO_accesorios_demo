@@ -15,7 +15,7 @@ export default function BlogPage() {
                 <link rel="icon" href="/logoJao.png" />
             </Head>
             <Navbar />
-            <main className="min-h-screen h-fit flex flex-col bg-primary items-center max-w-screen min-w-full w-fit  overflow-x-hidden pt-20 text-textColor" dangerouslySetInnerHTML={{ __html: blogContent ? blogContent : "" }} />
+            <main className="min-h-screen h-fit flex flex-col bg-primary items-center max-w-screen min-w-full w-fit  overflow-x-hidden pt-20 text-textColor [&>h1]:text-6xl [&>h2]:text-4xl [&>h3]:text-2xl [&>h4]:text-xl [&>ul]:list-disc text-start space-y-10 [&>img]:w-1/2 [&>img]:rounded-md" dangerouslySetInnerHTML={{ __html: blogContent ? blogContent : "" }} />
         </div >
     )
 

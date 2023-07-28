@@ -33,10 +33,11 @@ model Envio {
 }
 
 model Blog {
-    id          String @id @default(cuid())
+    id          String   @id @default(cuid())
+    created     DateTime @default(now())
     Title       String
     Image       String
     Description String
-    MdContent   String
-    HtmlContent String
+    MdContent   String   @db.Text
+    HtmlContent String   @db.Text
 }
