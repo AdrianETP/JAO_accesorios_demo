@@ -11,6 +11,7 @@ const server = z.object({
     STRIPE_PUBLISHABLE_KEY: z.string(),
     SMTP_USERNAME: z.string(),
     SMTP_PASSWORD: z.string(),
+    BLOG_PASSWORD: z.string()
 });
 
 /**
@@ -34,6 +35,7 @@ const processEnv = {
     STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
     SMTP_USERNAME: process.env.SMTP_USERNAME,
     SMTP_PASSWORD: process.env.SMTP_PASSWORD,
+    BLOG_PASSWORD: process.env.BLOG_PASSWORD
 
     // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
