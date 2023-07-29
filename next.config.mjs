@@ -31,8 +31,6 @@ const config = {
             {
                 protocol: 'https',
                 hostname: 'images.unsplash.com',
-                port: '',
-                pathname: '/**',
             }
         ],
     }
