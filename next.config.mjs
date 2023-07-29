@@ -1,3 +1,5 @@
+import path from "path";
+
 /**
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
  * This is especially useful for Docker builds.
@@ -19,7 +21,6 @@ const config = {
         defaultLocale: "en",
     },
     images: {
-        domains: ["images.unsplash.com"],
         remotePatterns: [
             {
                 protocol: 'https',
@@ -27,6 +28,12 @@ const config = {
                 port: '',
                 pathname: '/links/**',
             },
+            {
+                protocol: 'https',
+                hostname: 'images.unsplash.com',
+                port: '',
+                pathname: '/**',
+            }
         ],
     }
 };
